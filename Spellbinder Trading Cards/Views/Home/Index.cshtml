@@ -1,8 +1,70 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="bg-primary">
+            <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="hero-tag">
+                        WELCOME TO SPELLBINDER
+                    </span>
+
+                    <h1>
+                        Discover Rare Cards<br />
+                        Build Legendary Collections
+                    </h1>
+
+                    <p>
+                        Browse singles, sealed products and collector favourites.
+                        Start your next trading card adventure today.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a asp-controller="Products"
+                           asp-action="Index"
+                           class="btn-primary-custom">
+                        <i class="fa-solid fa-bag-shopping fa-xl m-2"></i>Shop Cards
+                        </a>
+
+                        <a asp-controller="Collections"
+                           asp-action="Index"
+                           class="btn-secondary-custom">
+                        <i class="fa-solid fa-vault fa-xl m-2"></i>Browse Your Vault
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End of Hero-->
+        <div class="container px-4 py-5" id="custom-cards">
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 fw-bold">High Quality</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 fw-bold">Save your designs</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 fw-bold">Gift to your friends & family</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>

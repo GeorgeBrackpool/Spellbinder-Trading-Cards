@@ -1,0 +1,119 @@
+﻿:root {
+    --color-background: #0B0B12;
+    --color-surface: #161622;
+    --color-surface-hover: #212131;
+    --color-primary: #2A174A;
+    --color-secondary: #5D3FD3;
+    --color-accent: #D4AF37;
+    --color-accent-light: #F4D27A;
+    --color-glow: #8B5CF6;
+    --color-text: #F8F7F2;
+    --color-text-muted: #B7B7C7;
+    --color-text-subtle: #6E6E7F;
+}
+
+body {
+    font-family: cinzel-main;
+}
+
+.cinzel-main {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+#hero-img {
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+}
+
+.hero-section {
+    position: relative;
+    height: 85vh;
+    min-height: 700px;
+    background-image: url('/assets/images/hero/index_hero_cards.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient( 90deg, rgba(11,11,18,.95) 0%, rgba(11,11,18,.75) 35%, rgba(11,11,18,.25) 70%, rgba(11,11,18,.10) 100% );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-tag {
+    color: #D4AF37;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 2rem;
+}
+
+.hero-text h1 {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.hero-text p {
+    color: #d4d4d8;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-custom {
+    background: linear-gradient( 135deg, #D4AF37, #F4D27A );
+    color: #0B0B12;
+    text-decoration: none;
+    padding: 32px 64px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+    .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(212,175,55,.35);
+    }
+
+.btn-secondary-custom {
+    border: 1px solid rgba(255,255,255,.3);
+    color: white;
+    text-decoration: none;
+    padding: 32px 64px;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+    .btn-secondary-custom:hover {
+        background: rgba(255,255,255,.1);
+        color: white;
+    }
+
+#nav-fa-hover:hover{
+    background: rgba(255,255,255,.1);
+    color: white;
+}

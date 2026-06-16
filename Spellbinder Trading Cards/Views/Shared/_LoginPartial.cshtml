@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SpellbinderTradingCards.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i id="nav-fa-hover" class="fa-regular fa-user fa-2xl"></i></a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">My Vault</a>
+                <a class="dropdown-item" href="#">Wishlist</a>
+                <a class="dropdown-item" href="#">My Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Sign Out</a>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+        <li class="nav-item ms-2">
+        <a class="nav-link" href="#">
+        <i id="nav-fa-hover" class="fa-solid fa-shopping-cart fa-2xl" aria-hidden="true"></i>
+        </a>
+        </li>
+    }
