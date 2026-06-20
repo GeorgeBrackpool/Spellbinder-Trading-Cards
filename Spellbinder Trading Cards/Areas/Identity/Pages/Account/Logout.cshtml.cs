@@ -27,6 +27,7 @@ public class LogoutModel : PageModel
     {
         await _signInManager.SignOutAsync();
         _logger.LogInformation("User logged out.");
+        TempData["Success"] = "You have logged out successfully.";
         if (returnUrl != null)
         {
             return LocalRedirect(returnUrl);

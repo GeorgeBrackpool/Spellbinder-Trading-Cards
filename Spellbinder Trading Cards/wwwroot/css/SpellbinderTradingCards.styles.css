@@ -117,3 +117,21 @@ body {
     background: rgba(255,255,255,.1);
     color: white;
 }
+
+#card-col
+{
+    background-color: var(--color-surface);
+    color: var(--color-accent-light);
+}
+#card-col h4
+{
+    color: var(--color-accent-light);
+}
+#card-col i
+{
+    color: var(--color-glow);
+}
+.features-section
+{
+    background-color: var(--color-primary);
+}
