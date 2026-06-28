@@ -12,14 +12,29 @@
     --color-text-subtle: #6E6E7F;
 }
 
-body {
-    font-family: cinzel-main;
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Cinzel', serif;
 }
-
+body
+{
+    font-family: 'Cinzel', serif;
+}
+p
+{
+    font-family: 'Inter', sans-serif;
+}
 .cinzel-main {
     font-family: "Cinzel", serif;
     font-optical-sizing: auto;
     font-weight: 800;
+    font-style: normal;
+}
+
+
+.inter-body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -52,7 +67,7 @@ body {
 }
 
 .hero-text {
-    max-width: 650px;
+    max-width: 750px;
 }
 
 .hero-tag {
@@ -72,6 +87,7 @@ body {
 }
 
 .hero-text p {
+    font-family: 'Inter', sans-serif;
     color: #d4d4d8;
     font-size: 1.25rem;
     line-height: 1.7;
@@ -118,14 +134,13 @@ body {
     color: white;
 }
 
-#card-col
-{
-    background-color: var(--color-surface);
-    color: var(--color-accent-light);
+#card-col {
+    background-color: #EEEBE6;
+    color: black;
 }
 #card-col h4
 {
-    color: var(--color-accent-light);
+    color: black;
 }
 #card-col i
 {
