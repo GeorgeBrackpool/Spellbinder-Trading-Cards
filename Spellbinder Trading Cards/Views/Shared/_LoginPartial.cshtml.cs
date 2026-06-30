@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Spellbinder_Trading_Cards.Views.Shared
+namespace SpellbinderTradingCards.Views.Shared
 {
     public class _LoginPartialModel : PageModel
     {

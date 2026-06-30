@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Spellbinder_Trading_Cards.Models;
+using SpellbinderTradingCards.Models;
 using System.Diagnostics;
 
-namespace Spellbinder_Trading_Cards.Controllers
+namespace SpellbinderTradingCards.Controllers
 {
     public class HomeController : Controller
     {

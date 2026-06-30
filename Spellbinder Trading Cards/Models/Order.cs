@@ -1,12 +1,20 @@
-﻿namespace Spellbinder_Trading_Cards.Models
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using SpellbinderTradingCards.Data;
+
+namespace SpellbinderTradingCards.Models
 {
     public class Order
     {
         public int OrderId {  get; set; }
-        public int UserId { get; set; }
+        public required string UserId { get; set; }
+        public required ApplicationUser User { get; set; }
         public DateTime OrderDate { get; set; }
+        [Precision(10,2)]
         public decimal TotalPrice { get; set; }
         public required string Status { get; set; }
+
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     }
 }

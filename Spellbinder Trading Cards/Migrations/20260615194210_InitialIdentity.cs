@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Spellbinder_Trading_Cards.Migrations
+namespace SpellbinderTradingCards.Migrations
 {
     /// <inheritdoc />
     public partial class InitialIdentity : Migration

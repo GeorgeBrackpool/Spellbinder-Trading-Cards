@@ -1,4 +1,4 @@
-namespace Spellbinder_Trading_Cards.Models
+namespace SpellbinderTradingCards.Models
 {
     public class ErrorViewModel
     {

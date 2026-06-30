@@ -9,7 +9,7 @@ using SpellbinderTradingCards.Data;
 
 #nullable disable
 
-namespace Spellbinder_Trading_Cards.Migrations
+namespace SpellbinderTradingCards.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20260615194210_InitialIdentity")]
