@@ -1,0 +1,126 @@
+@model IEnumerable<SpellbinderTradingCards.Models.Card>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RarityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rarity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConditionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Condition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartItem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Set)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ImageUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.BrandId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.RarityId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Rarity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ConditionId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Condition)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.OrderItem)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CartItem)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SetId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Set)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.StockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CardId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CardId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CardId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

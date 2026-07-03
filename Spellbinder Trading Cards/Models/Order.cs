@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SpellbinderTradingCards.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace SpellbinderTradingCards.Models
 {
@@ -12,6 +13,8 @@ namespace SpellbinderTradingCards.Models
         public DateTime OrderDate { get; set; }
         [Precision(10,2)]
         public decimal TotalPrice { get; set; }
+        [Unicode(false)]
+        [MaxLength(50)]
         public required string Status { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();

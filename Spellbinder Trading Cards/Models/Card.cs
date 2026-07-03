@@ -10,13 +10,15 @@ namespace SpellbinderTradingCards.Models
     {
         public int CardId { get; set; }
 
-        [MaxLength(100)] // TODO: Add these to the rest of the fields that need it in data dictionary.
+        [MaxLength(100)]
         public required string Name { get; set; }
         [Precision(10,2)]
         public decimal Price { get; set; }
+        [MaxLength(500)]
         public string? ImageUrl { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; } = null!;
+        [MaxLength(500)]
         public string? Description { get; set; }
         public int RarityId { get; set; }
         public Rarity Rarity { get; set; } = null!;
