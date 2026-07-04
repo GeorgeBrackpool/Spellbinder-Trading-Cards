@@ -54,6 +54,10 @@ public class CardsController : Controller
     {
         if (ModelState.IsValid)
         {
+            if (!string.IsNullOrEmpty(card.ImageUrl))
+            {
+                card.ImageUrl = "/assets/images/cards/" + card.ImageUrl.Trim();
+            }
             _context.Add(card);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

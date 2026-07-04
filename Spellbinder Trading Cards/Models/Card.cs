@@ -15,7 +15,9 @@ namespace SpellbinderTradingCards.Models
         [Precision(10,2)]
         public decimal Price { get; set; }
         [MaxLength(500)]
-        public string? ImageUrl { get; set; }
+        public required string ImageUrl { get; set; }
+        [NotMapped]
+        public string? ImageFileName { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; } = null!;
         [MaxLength(500)]

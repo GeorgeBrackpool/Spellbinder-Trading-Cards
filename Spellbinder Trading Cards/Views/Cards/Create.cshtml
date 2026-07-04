@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1 class="ms-3">Create</h1>
 
-<h4>Card</h4>
+<h4 class="ms-3">Card</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row ms-3">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -22,20 +22,13 @@
 
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control"/>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label"></label>
-                <input asp-for="BrandId" class="form-control" />
-                <span asp-validation-for="BrandId" class="text-danger"></span>
+                <label asp-for="ImageFileName" class="control-label">Card Image File Name & File Type</label>
+                <input asp-for="ImageFileName" class="form-control" placeholder="e.g Blue-Eyes-White-Dragon.jpg" />
+                <span asp-validation-for="ImageFileName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -51,21 +44,9 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="RarityId" class="control-label"></label>
-                <input asp-for="RarityId" class="form-control" />
-                <span asp-validation-for="RarityId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="Rarity" class="control-label"></label>
                 <input asp-for="Rarity" class="form-control" />
                 <span asp-validation-for="Rarity" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ConditionId" class="control-label"></label>
-                <input asp-for="ConditionId" class="form-control" />
-                <span asp-validation-for="ConditionId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -73,25 +54,6 @@
                 <input asp-for="Condition" class="form-control" />
                 <span asp-validation-for="Condition" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="OrderItem" class="control-label"></label>
-                <input asp-for="OrderItem" class="form-control" />
-                <span asp-validation-for="OrderItem" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="CartItem" class="control-label"></label>
-                <input asp-for="CartItem" class="form-control" />
-                <span asp-validation-for="CartItem" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="SetId" class="control-label"></label>
-                <input asp-for="SetId" class="form-control" />
-                <span asp-validation-for="SetId" class="text-danger"></span>
-            </div>
-
             <div class="form-group">
                 <label asp-for="Set" class="control-label"></label>
                 <input asp-for="Set" class="form-control" />
@@ -100,7 +62,7 @@
 
             <div class="form-group">
                 <label asp-for="StockQuantity" class="control-label"></label>
-                <input asp-for="StockQuantity" class="form-control" />
+                <input asp-for="StockQuantity" class="form-control" min="0" />
                 <span asp-validation-for="StockQuantity" class="text-danger"></span>
             </div>
 
@@ -109,13 +71,13 @@
                 <input asp-for="CreatedDate" class="form-control" />
                 <span asp-validation-for="CreatedDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="mt-4">
     <a asp-action="Index">Back to List</a>
 </div>

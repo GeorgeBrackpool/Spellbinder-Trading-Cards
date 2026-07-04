@@ -1,11 +1,11 @@
 @model IEnumerable<SpellbinderTradingCards.Models.Card>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cards";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Cards</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -23,34 +23,16 @@
                 @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BrandId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Brand)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RarityId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Rarity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ConditionId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Condition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderItem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CartItem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SetId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Set)
@@ -77,34 +59,16 @@
                 @Html.DisplayFor(model => item.ImageUrl)
             </td>
             <td>
-                @Html.DisplayFor(model => item.BrandId)
-            </td>
-            <td>
                 @Html.DisplayFor(model => item.Brand)
             </td>
             <td>
                 @Html.DisplayFor(model => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(model => item.RarityId)
-            </td>
-            <td>
                 @Html.DisplayFor(model => item.Rarity)
             </td>
             <td>
-                @Html.DisplayFor(model => item.ConditionId)
-            </td>
-            <td>
                 @Html.DisplayFor(model => item.Condition)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.OrderItem)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.CartItem)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.SetId)
             </td>
             <td>
                 @Html.DisplayFor(model => item.Set)
