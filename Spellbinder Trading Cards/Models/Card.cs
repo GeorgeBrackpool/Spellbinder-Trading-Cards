@@ -18,19 +18,19 @@ namespace SpellbinderTradingCards.Models
         public required string ImageUrl { get; set; }
         [NotMapped]
         public string? ImageFileName { get; set; }
-        public int BrandId { get; set; }
-        public Brand Brand { get; set; } = null!;
+        public int TradingCardGameId { get; set; }
+        public TradingCardGame? TradingCardGame { get; set; }
         [MaxLength(500)]
         public string? Description { get; set; }
         public int RarityId { get; set; }
-        public Rarity Rarity { get; set; } = null!;
+        public Rarity? Rarity { get; set; }
         public int ConditionId { get; set; }
-        public Condition Condition { get; set; } = null!;
+        public Condition? Condition { get; set; }
         public ICollection<OrderItem> OrderItem { get; set; } = new List<OrderItem>();
         public ICollection<CartItem> CartItem { get; set; } = new List<CartItem>();
 
         public int SetId { get; set; }
-        public Set Set { get; set; } = null!;
+        public Set? Set { get; set; }
         public int StockQuantity { get; set; }
         public DateTime CreatedDate { get; set; }
 

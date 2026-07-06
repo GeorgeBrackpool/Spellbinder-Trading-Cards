@@ -11,7 +11,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
        
     }
-    public DbSet<Brand> Brands { get; set; }
+    public DbSet<TradingCardGame> TradingCardGames { get; set; }
     public DbSet<Card> Cards { get; set; }
     public DbSet<CartItem> CartItems { get; set; }
     public DbSet<Condition> Conditions { get; set; }
@@ -20,4 +20,34 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Rarity> Rarities { get; set; }
     public DbSet<Set> Sets { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+    //TODO: Fix cascade error by using modelbuilder below don't include seeded data yet,Update ERD and Data dictionary,  create view model to show data from this in view. https://stackoverflow.com/questions/11064316/what-is-viewmodel-in-mvc
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+     {
+         // Call the base Identity configuration first(e.g. users), then apply custom model configuration (e.g. seeded lookup data).
+         base.OnModelCreating(modelBuilder);
+    
+
+
+        modelBuilder.Entity<Rarity>()
+             .HasOne(r => r.TradingCardGame)
+             .WithMany(g => g.Rarities)
+             .HasForeignKey(r => r.TradingCardGameId)
+             .OnDelete(DeleteBehavior.Restrict);
+
+     }
+    
+
+
+    /* modelBuilder.Entity<Brand>().HasData(
+             new Brand { BrandId = 1, Name =  "Pokemon"},
+             new Brand { BrandId = 2, Name = "Yu-Gi-Oh"},
+             new Brand { BrandId = 3, Name = "Magic: The Gathering"},
+             new Brand { BrandId = 4, Name = "Riftbound"}
+             );
+
+         modelBuilder.Entity<Rarity>().HasData(
+
+             )*/
 }

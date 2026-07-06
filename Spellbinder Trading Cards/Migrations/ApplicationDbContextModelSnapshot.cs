@@ -224,24 +224,6 @@ namespace SpellbinderTradingCards.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("SpellbinderTradingCards.Models.Brand", b =>
-                {
-                    b.Property<int>("BrandId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BrandId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("BrandId");
-
-                    b.ToTable("Brands");
-                });
-
             modelBuilder.Entity("SpellbinderTradingCards.Models.Card", b =>
                 {
                     b.Property<int>("CardId")
@@ -249,9 +231,6 @@ namespace SpellbinderTradingCards.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardId"));
-
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
 
                     b.Property<int>("ConditionId")
                         .HasColumnType("int");
@@ -286,15 +265,18 @@ namespace SpellbinderTradingCards.Migrations
                     b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
-                    b.HasKey("CardId");
+                    b.Property<int>("TradingCardGameId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("BrandId");
+                    b.HasKey("CardId");
 
                     b.HasIndex("ConditionId");
 
                     b.HasIndex("RarityId");
 
                     b.HasIndex("SetId");
+
+                    b.HasIndex("TradingCardGameId");
 
                     b.ToTable("Cards");
                 });
@@ -421,7 +403,12 @@ namespace SpellbinderTradingCards.Migrations
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("TradingCardGameId")
+                        .HasColumnType("int");
+
                     b.HasKey("RarityId");
+
+                    b.HasIndex("TradingCardGameId");
 
                     b.ToTable("Rarities");
                 });
@@ -461,6 +448,24 @@ namespace SpellbinderTradingCards.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("SpellbinderTradingCards.Models.TradingCardGame", b =>
+                {
+                    b.Property<int>("TradingCardGameId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TradingCardGameId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("TradingCardGameId");
+
+                    b.ToTable("TradingCardGames");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -516,12 +521,6 @@ namespace SpellbinderTradingCards.Migrations
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.Card", b =>
                 {
-                    b.HasOne("SpellbinderTradingCards.Models.Brand", "Brand")
-                        .WithMany("cards")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SpellbinderTradingCards.Models.Condition", "Condition")
                         .WithMany("cards")
                         .HasForeignKey("ConditionId")
@@ -540,13 +539,19 @@ namespace SpellbinderTradingCards.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Brand");
+                    b.HasOne("SpellbinderTradingCards.Models.TradingCardGame", "TradingCardGame")
+                        .WithMany("cards")
+                        .HasForeignKey("TradingCardGameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Condition");
 
                     b.Navigation("Rarity");
 
                     b.Navigation("Set");
+
+                    b.Navigation("TradingCardGame");
                 });
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.CartItem", b =>
@@ -598,6 +603,17 @@ namespace SpellbinderTradingCards.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("SpellbinderTradingCards.Models.Rarity", b =>
+                {
+                    b.HasOne("SpellbinderTradingCards.Models.TradingCardGame", "TradingCardGame")
+                        .WithMany("Rarities")
+                        .HasForeignKey("TradingCardGameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TradingCardGame");
+                });
+
             modelBuilder.Entity("SpellbinderTradingCards.Models.ShoppingCart", b =>
                 {
                     b.HasOne("SpellbinderTradingCards.Data.ApplicationUser", "User")
@@ -607,11 +623,6 @@ namespace SpellbinderTradingCards.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SpellbinderTradingCards.Models.Brand", b =>
-                {
-                    b.Navigation("cards");
                 });
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.Card", b =>
@@ -644,6 +655,13 @@ namespace SpellbinderTradingCards.Migrations
             modelBuilder.Entity("SpellbinderTradingCards.Models.ShoppingCart", b =>
                 {
                     b.Navigation("CartItems");
+                });
+
+            modelBuilder.Entity("SpellbinderTradingCards.Models.TradingCardGame", b =>
+                {
+                    b.Navigation("Rarities");
+
+                    b.Navigation("cards");
                 });
 #pragma warning restore 612, 618
         }

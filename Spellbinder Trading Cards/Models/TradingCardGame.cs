@@ -2,11 +2,12 @@
 
 namespace SpellbinderTradingCards.Models
 {
-    public class Brand
+    public class TradingCardGame
     {
-        public int BrandId { get; set; }
+        public int TradingCardGameId { get; set; }
         [MaxLength(100)]
         public required string Name { get; set; }
+        public ICollection<Rarity> Rarities { get; set; } = new List<Rarity>();
 
         public ICollection<Card> cards { get; set; } = new List<Card>();
     }
