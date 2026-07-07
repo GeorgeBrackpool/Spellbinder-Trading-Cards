@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SpellbinderTradingCards.Data.Seed;
 using SpellbinderTradingCards.Models;
 
 namespace SpellbinderTradingCards.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
+    
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
@@ -21,9 +23,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Set> Sets { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
-    //TODO: Fix cascade error by using modelbuilder below don't include seeded data yet,Update ERD and Data dictionary,  create view model to show data from this in view. https://stackoverflow.com/questions/11064316/what-is-viewmodel-in-mvc
+    //TODO: Update ERD and Data dictionary,  create view model to show data from this in view. https://stackoverflow.com/questions/11064316/what-is-viewmodel-in-mvc
+    // Data seeding reference https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
      {
          // Call the base Identity configuration first(e.g. users), then apply custom model configuration (e.g. seeded lookup data).
          base.OnModelCreating(modelBuilder);
@@ -36,18 +39,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
              .HasForeignKey(r => r.TradingCardGameId)
              .OnDelete(DeleteBehavior.Restrict);
 
+        TradingCardGameSeed.Seed(modelBuilder);
+        ConditionSeed.Seed(modelBuilder);
+
      }
-    
-
-
-    /* modelBuilder.Entity<Brand>().HasData(
-             new Brand { BrandId = 1, Name =  "Pokemon"},
-             new Brand { BrandId = 2, Name = "Yu-Gi-Oh"},
-             new Brand { BrandId = 3, Name = "Magic: The Gathering"},
-             new Brand { BrandId = 4, Name = "Riftbound"}
-             );
-
-         modelBuilder.Entity<Rarity>().HasData(
-
-             )*/
 }

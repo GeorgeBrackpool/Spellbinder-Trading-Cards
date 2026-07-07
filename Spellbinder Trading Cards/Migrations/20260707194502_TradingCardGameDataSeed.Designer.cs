@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpellbinderTradingCards.Data;
 
@@ -11,9 +12,11 @@ using SpellbinderTradingCards.Data;
 namespace SpellbinderTradingCards.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260707194502_TradingCardGameDataSeed")]
+    partial class TradingCardGameDataSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -326,38 +329,6 @@ namespace SpellbinderTradingCards.Migrations
                     b.HasKey("ConditionId");
 
                     b.ToTable("Conditions");
-
-                    b.HasData(
-                        new
-                        {
-                            ConditionId = 1,
-                            Name = "Mint"
-                        },
-                        new
-                        {
-                            ConditionId = 2,
-                            Name = "Near Mint"
-                        },
-                        new
-                        {
-                            ConditionId = 3,
-                            Name = "Slightly Played"
-                        },
-                        new
-                        {
-                            ConditionId = 4,
-                            Name = "Moderately Played"
-                        },
-                        new
-                        {
-                            ConditionId = 5,
-                            Name = "Heavily Played"
-                        },
-                        new
-                        {
-                            ConditionId = 6,
-                            Name = "Damaged"
-                        });
                 });
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.Order", b =>
