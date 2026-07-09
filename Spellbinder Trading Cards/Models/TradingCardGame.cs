@@ -8,7 +8,7 @@ namespace SpellbinderTradingCards.Models
         [MaxLength(100)]
         public required string Name { get; set; }
         public ICollection<Rarity> Rarities { get; set; } = new List<Rarity>();
+        public ICollection<Set> Sets { get; set; } = new List<Set>();
 
-        public ICollection<Card> cards { get; set; } = new List<Card>();
     }
 }

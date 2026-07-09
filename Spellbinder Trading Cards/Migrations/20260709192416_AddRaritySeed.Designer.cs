@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpellbinderTradingCards.Data;
 
@@ -11,9 +12,11 @@ using SpellbinderTradingCards.Data;
 namespace SpellbinderTradingCards.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260709192416_AddRaritySeed")]
+    partial class AddRaritySeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,6 +268,9 @@ namespace SpellbinderTradingCards.Migrations
                     b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("TradingCardGameId")
+                        .HasColumnType("int");
+
                     b.HasKey("CardId");
 
                     b.HasIndex("ConditionId");
@@ -272,6 +278,8 @@ namespace SpellbinderTradingCards.Migrations
                     b.HasIndex("RarityId");
 
                     b.HasIndex("SetId");
+
+                    b.HasIndex("TradingCardGameId");
 
                     b.ToTable("Cards");
                 });
@@ -659,12 +667,7 @@ namespace SpellbinderTradingCards.Migrations
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("TradingCardGameId")
-                        .HasColumnType("int");
-
                     b.HasKey("SetId");
-
-                    b.HasIndex("TradingCardGameId");
 
                     b.ToTable("Sets");
                 });
@@ -794,8 +797,14 @@ namespace SpellbinderTradingCards.Migrations
                         .IsRequired();
 
                     b.HasOne("SpellbinderTradingCards.Models.Set", "Set")
-                        .WithMany()
+                        .WithMany("cards")
                         .HasForeignKey("SetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpellbinderTradingCards.Models.TradingCardGame", "TradingCardGame")
+                        .WithMany("cards")
+                        .HasForeignKey("TradingCardGameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -804,12 +813,14 @@ namespace SpellbinderTradingCards.Migrations
                     b.Navigation("Rarity");
 
                     b.Navigation("Set");
+
+                    b.Navigation("TradingCardGame");
                 });
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.CartItem", b =>
                 {
                     b.HasOne("SpellbinderTradingCards.Models.Card", "Card")
-                        .WithMany("CartItems")
+                        .WithMany("CartItem")
                         .HasForeignKey("CardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -839,7 +850,7 @@ namespace SpellbinderTradingCards.Migrations
             modelBuilder.Entity("SpellbinderTradingCards.Models.OrderItem", b =>
                 {
                     b.HasOne("SpellbinderTradingCards.Models.Card", "Card")
-                        .WithMany("OrderItems")
+                        .WithMany("OrderItem")
                         .HasForeignKey("CardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -866,17 +877,6 @@ namespace SpellbinderTradingCards.Migrations
                     b.Navigation("TradingCardGame");
                 });
 
-            modelBuilder.Entity("SpellbinderTradingCards.Models.Set", b =>
-                {
-                    b.HasOne("SpellbinderTradingCards.Models.TradingCardGame", "TradingCardGame")
-                        .WithMany("Sets")
-                        .HasForeignKey("TradingCardGameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("TradingCardGame");
-                });
-
             modelBuilder.Entity("SpellbinderTradingCards.Models.ShoppingCart", b =>
                 {
                     b.HasOne("SpellbinderTradingCards.Data.ApplicationUser", "User")
@@ -890,9 +890,9 @@ namespace SpellbinderTradingCards.Migrations
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.Card", b =>
                 {
-                    b.Navigation("CartItems");
+                    b.Navigation("CartItem");
 
-                    b.Navigation("OrderItems");
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.Condition", b =>
@@ -910,6 +910,11 @@ namespace SpellbinderTradingCards.Migrations
                     b.Navigation("cards");
                 });
 
+            modelBuilder.Entity("SpellbinderTradingCards.Models.Set", b =>
+                {
+                    b.Navigation("cards");
+                });
+
             modelBuilder.Entity("SpellbinderTradingCards.Models.ShoppingCart", b =>
                 {
                     b.Navigation("CartItems");
@@ -919,7 +924,7 @@ namespace SpellbinderTradingCards.Migrations
                 {
                     b.Navigation("Rarities");
 
-                    b.Navigation("Sets");
+                    b.Navigation("cards");
                 });
 #pragma warning restore 612, 618
         }
