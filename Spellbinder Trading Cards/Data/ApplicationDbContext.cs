@@ -46,6 +46,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         TradingCardGameSeed.Seed(modelBuilder);
         ConditionSeed.Seed(modelBuilder);
         RaritySeed.Seed(modelBuilder);
+        SetSeed.Seed(modelBuilder);
 
      }
 }

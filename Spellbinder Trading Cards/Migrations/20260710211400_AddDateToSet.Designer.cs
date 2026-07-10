@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpellbinderTradingCards.Data;
 
@@ -11,9 +12,11 @@ using SpellbinderTradingCards.Data;
 namespace SpellbinderTradingCards.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260710211400_AddDateToSet")]
+    partial class AddDateToSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -670,176 +673,6 @@ namespace SpellbinderTradingCards.Migrations
                     b.HasIndex("TradingCardGameId");
 
                     b.ToTable("Sets");
-
-                    b.HasData(
-                        new
-                        {
-                            SetId = 1,
-                            Name = "Scarlet & Violet",
-                            ReleaseDate = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 2,
-                            Name = "Paldea Evolved",
-                            ReleaseDate = new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 3,
-                            Name = "Obsidian Flames",
-                            ReleaseDate = new DateTime(2023, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 4,
-                            Name = "151",
-                            ReleaseDate = new DateTime(2023, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 5,
-                            Name = "Temporal Forces",
-                            ReleaseDate = new DateTime(2024, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 6,
-                            Name = "Twilight Masquerade",
-                            ReleaseDate = new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 7,
-                            Name = "Surging Sparks",
-                            ReleaseDate = new DateTime(2024, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 1
-                        },
-                        new
-                        {
-                            SetId = 8,
-                            Name = "Phantom Darkness",
-                            ReleaseDate = new DateTime(2008, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 9,
-                            Name = "Duelist Alliance",
-                            ReleaseDate = new DateTime(2014, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 10,
-                            Name = "Maximum Gold",
-                            ReleaseDate = new DateTime(2020, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 11,
-                            Name = "Battles of Legend: Crystal Revenge",
-                            ReleaseDate = new DateTime(2022, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 12,
-                            Name = "25th Anniversary Rarity Collection",
-                            ReleaseDate = new DateTime(2023, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 13,
-                            Name = "Legacy of Destruction",
-                            ReleaseDate = new DateTime(2024, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 14,
-                            Name = "Supreme Darkness",
-                            ReleaseDate = new DateTime(2025, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 2
-                        },
-                        new
-                        {
-                            SetId = 15,
-                            Name = "Modern Horizons",
-                            ReleaseDate = new DateTime(2019, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 16,
-                            Name = "The Brothers' War",
-                            ReleaseDate = new DateTime(2022, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 17,
-                            Name = "Wilds of Eldraine",
-                            ReleaseDate = new DateTime(2023, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 18,
-                            Name = "Murders at Karlov Manor",
-                            ReleaseDate = new DateTime(2024, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 19,
-                            Name = "Bloomburrow",
-                            ReleaseDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 20,
-                            Name = "Duskmourn: House of Horror",
-                            ReleaseDate = new DateTime(2024, 9, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 21,
-                            Name = "Foundations",
-                            ReleaseDate = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 3
-                        },
-                        new
-                        {
-                            SetId = 22,
-                            Name = "Origins",
-                            ReleaseDate = new DateTime(2025, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 4
-                        },
-                        new
-                        {
-                            SetId = 23,
-                            Name = "Spiritforged",
-                            ReleaseDate = new DateTime(2026, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 4
-                        },
-                        new
-                        {
-                            SetId = 24,
-                            Name = "Unleashed",
-                            ReleaseDate = new DateTime(2026, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TradingCardGameId = 4
-                        });
                 });
 
             modelBuilder.Entity("SpellbinderTradingCards.Models.ShoppingCart", b =>
